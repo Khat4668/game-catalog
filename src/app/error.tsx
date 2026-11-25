@@ -1,9 +1,18 @@
 "use client";
 
-export default function ErrorPage() {
+import { Button } from "@/components/ui/button";
+
+type ErrorPageProps = {
+  error: Error & { digest?: string };
+  retry: () => void;
+};
+
+export default function ErrorPage(props: ErrorPageProps) {
   return (
-    <div className="flex items-center justify-center">
-      <h1>Error Page</h1>
+    <div className="flex flex-col items-center justify-center gap-1.5">
+      <h1>Something went wrong</h1>
+
+      <Button onClick={() => props.retry()}>Try again</Button>
     </div>
   );
 }
